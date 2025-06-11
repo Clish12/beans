@@ -1,0 +1,865 @@
+/* General Body & HTML Reset */
+:root {
+    /* New Purple & Cream Theme */
+    --primary-purple: #6A0DAD; /* A vibrant royal purple */
+    --primary-dark-purple: #4B0082; /* Darker purple for accents/hover */
+    --cream-light: #F5F5DC; /* Soft cream for backgrounds */
+    --cream-dark: #E0E0C6; /* Slightly darker cream for subtle contrasts */
+    --text-color: #333333; /* Dark gray for general text */
+    --heading-color: #2E294E; /* Deep purple, your existing --deep-purple */
+    --light-gray: #F7F9F9; /* Keeping this for subtle section backgrounds if needed */
+    --white: #FFFFFF; /* Pure white for elements that stand out */
+
+    /* Gradient for highlights (blending purple) */
+    --gradient-start: #8A2BE2; /* Bluish-purple */
+    --gradient-end: #BA55D3; /* Medium Orchid */
+
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Standard shadow */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--cream-light); /* Main background now cream */
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primary-purple); /* Header now primary purple */
+    color: var(--white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Added for responsiveness */
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    color: var(--white); /* Logo text is white */
+}
+
+.logo span {
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* Added for wider browser support */
+    color: transparent; /* Fallback */
+}
+
+.section-title span {
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /* Added for wider browser support */
+    color: transparent; /* Fallback */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin-top: 0; /* Reset margin for flex container */
+    flex-wrap: wrap; /* Allow links to wrap */
+}
+
+.nav-links li {
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 500;
+    padding: 0.5rem 0; /* Added padding for better hover area */
+    position: relative; /* For the underline effect */
+}
+
+.nav-links a::after { /* Underline effect */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gradient-end); /* Matches gradient */
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--gradient-end); /* Hover color matches gradient end */
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px; /* Space between spans */
+}
+
+.hamburger span {
+    background: white;
+    height: 3px;
+    width: 25px;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+/* JavaScript will add 'open' class to .hamburger and .nav-links */
+.hamburger.open span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+.nav-links.open {
+    display: flex; /* Show when open */
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    gap: 1rem;
+    background-color: var(--primary-purple); /* Background for mobile nav */
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1rem;
+}
+
+.active {
+    color: var(--gradient-end) !important; /* Active link color */
+}
+
+.hero {
+    /* Blend purple with cream. Use a darker purple overlay on an image, or a simple gradient */
+    background: linear-gradient(to bottom, var(--primary-purple), var(--primary-dark-purple)); /* Solid purple gradient */
+    /* If you want an image with an overlay, uncomment the next line and adjust the image path/opacity */
+    /* background: linear-gradient(rgba(106, 13, 173, 0.8), rgba(75, 0, 130, 0.9)), url('img/home_bg.jpg') center center/cover; */
+    color: white;
+    text-align: center;
+    padding: 6rem 1rem; /* Increased padding */
+}
+
+.hero h1 {
+    font-size: 3.5rem; /* Larger heading */
+    margin-bottom: 1rem;
+    line-height: 1.2; /* Better line spacing */
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 800px; /* Wider text for readability */
+    margin: 0 auto 2rem;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.centered-logo {
+    width: 250px; /* Slightly larger logo */
+    height: auto;
+    border-radius: 50%; /* Make it round if desired */
+    box-shadow: 0 0 15px var(--shadow-color); /* Subtle shadow for depth */
+    transition: transform 0.3s ease;
+}
+
+
+.btn, .center-button { /* Combined styles for consistency */
+    display: inline-block;
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    color: var(--white);
+    padding: 12px 25px; /* Slightly larger buttons */
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600; /* Bolder text */
+    transition: all 0.3s ease;
+    border: none; /* Ensure no default border */
+    cursor: pointer;
+}
+
+.btn:hover, .center-button:hover {
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4); /* Purple shadow on hover */
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.btn-secondary { /* If you still want a secondary button style */
+    background-color: var(--primary-dark-purple);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-purple);
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback */
+    display: inline-block;
+}
+
+.section {
+    padding: 60px 0; /* Increased padding */
+    background-color: var(--white); /* Sections are white on cream background */
+    margin-bottom: 20px;
+    border-radius: 8px; /* Rounded corners for sections */
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+/* Specific cream background for about section to differentiate */
+#about {
+    background-color: var(--cream-dark); /* Darker cream for about section */
+    box-shadow: none; /* No shadow to distinguish it */
+    border-radius: 0; /* No rounded corners here for a full-width feel */
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem; /* More space below title */
+    font-size: 2.5rem; /* Larger title */
+    color: var(--heading-color); /* Deep purple for titles */
+    position: relative;
+    padding-bottom: 10px; /* Space for the underline */
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px; /* Length of underline */
+    height: 4px; /* Thickness of underline */
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    border-radius: 2px;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    gap: 40px; /* More space between elements */
+    align-items: center;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px; /* Ensures image isn't too small before wrapping */
+    max-width: 50%; /* Prevents image from getting too wide */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.about-image img {
+    width: 100%;
+    display: block;
+    height: auto; /* Ensures aspect ratio is maintained */
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px; /* Ensures text isn't too small before wrapping */
+}
+
+.about-text h3 {
+    color: var(--primary-purple); /* Purple heading */
+    margin-bottom: 1rem;
+    font-size: 1.8rem; /* Larger heading */
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    line-height: 1.8; /* More comfortable reading */
+}
+
+.privacy-text { /* Assuming this is similar to about-text */
+    flex: 1;
+}
+
+.privacy-text h3 {
+    color: var(--primary-purple);
+    margin-bottom: 1rem;
+}
+
+.privacy-text p {
+    margin-bottom: 1rem;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between stat items */
+}
+
+.stat-item {
+    flex: 1;
+    min-width: 200px;
+    margin: 0; /* Reset margin from previous stat-item */
+    background-color: var(--white); /* White background for stats */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback */
+    margin-bottom: 0.5rem;
+}
+
+.stat-text { /* Added for better styling */
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.developers {
+    background-color: var(--cream-dark); /* Cream background for developers section */
+}
+
+.dev-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* More space between cards */
+}
+
+.dev-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px var(--shadow-color); /* Updated shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+    border-top: 4px solid; /* Solid border top for emphasis */
+    border-image: linear-gradient(90deg, var(--gradient-start), var(--gradient-end)) 1; /* Gradient border */
+}
+
+.dev-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: 0 8px 20px var(--shadow-color); /* Enhanced shadow on hover */
+}
+
+.dev-image {
+    height: 250px; /* Consistent image height */
+    overflow: hidden;
+}
+
+.dev-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top; /* Focus on the top of the image */
+    transition: transform 0.3s ease; /* Smooth zoom on hover */
+}
+
+.dev-card:hover .dev-image img {
+    transform: scale(1.05);
+}
+
+.dev-info {
+    padding: 20px; /* Consistent padding */
+    text-align: center; /* Centered text within card */
+}
+
+.dev-info h3 {
+    margin-bottom: 0.5rem;
+    color: var(--heading-color); /* Deep purple for names */
+    font-size: 1.5rem; /* Larger name font */
+}
+
+.dev-title {
+    color: var(--primary-purple); /* Primary purple for titles */
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem; /* More space above button */
+}
+
+.jobs-container {
+    max-width: 900px; /* Wider job card */
+    margin: 0 auto;
+    margin-bottom: 2rem;
+}
+
+.job-card {
+    background-color: var(--white);
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    padding: 30px; /* More padding */
+    box-shadow: 0 4px 10px var(--shadow-color); /* Stronger shadow */
+    border-left: 4px solid var(--primary-purple); /* Solid left border */
+}
+
+.job-title {
+    color: var(--heading-color); /* Deep purple for job titles */
+    margin-bottom: 0.5rem;
+    font-size: 2rem; /* Larger job title */
+}
+
+.job-meta {
+    display: flex;
+    gap: 15px; /* More space between meta items */
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem; /* More space below meta */
+    font-size: 0.9rem;
+    color: #666; /* Slightly lighter meta text */
+}
+
+.job-meta span {
+    background-color: var(--cream-light); /* Cream background for meta tags */
+    color: var(--primary-purple); /* Purple text for meta tags */
+    padding: 5px 10px; /* Larger padding */
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600; /* Bolder meta text */
+}
+
+.job-meta i {
+    margin-right: 0.5rem; /* More space for icon */
+}
+
+.job-description,
+.job-requirements,
+.job-qualifications {
+    margin-bottom: 1.5rem; /* Consistent spacing */
+}
+
+.job-requirements h4,
+.job-description h4,
+.job-qualifications h4 {
+    color: var(--primary-purple); /* Purple for subheadings */
+    margin: 1.5rem 0 0.8rem; /* More space above */
+    font-size: 1.3rem; /* Larger subheadings */
+    border-bottom: 2px solid var(--cream-dark); /* Subtle cream underline */
+    padding-bottom: 5px;
+    display: inline-block; /* Makes border-bottom fit text */
+}
+
+.job-description ul,
+.job-requirements ul,
+.job-qualifications ul {
+    padding-left: 0; /* Remove default padding */
+    list-style: none; /* Remove default bullets */
+}
+
+.job-description ul li::before,
+.job-requirements ul li::before,
+.job-qualifications ul li::before {
+    content: '•'; /* Custom bullet point */
+    color: var(--primary-purple);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.apply-section {
+    background: var(--cream-dark); /* Cream background for apply section */
+    padding: 4rem 0; /* Consistent section padding */
+}
+
+.form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 2.5rem; /* More padding */
+    border-radius: 10px;
+    box-shadow: 0 3px 10px var(--shadow-color);
+}
+
+.form-group {
+    margin-bottom: 1.8rem; /* More space between form groups */
+}
+
+label {
+    display: block;
+    margin-bottom: 0.6rem; /* More space below label */
+    font-weight: 500;
+    color: var(--heading-color); /* Deep purple for labels */
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.9rem; /* Larger input fields */
+    border: 1px solid var(--border-color); /* Standard border color */
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--cream-light); /* Light cream input background */
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-purple); /* Purple focus border */
+    box-shadow: 0 0 0 2px rgba(106, 13, 173, 0.2); /* Purple shadow on focus */
+}
+
+textarea {
+    min-height: 150px;
+}
+
+.resources {
+    background-color: var(--cream-dark); /* Cream background for resources section */
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* More space between cards */
+}
+
+.resource-card {
+    background-color: var(--white); /* White background for resource cards */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, var(--gradient-start), var(--gradient-end)) 1; /* Gradient border */
+}
+
+.resource-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.resource-image {
+    height: 180px; /* Consistent image height */
+    overflow: hidden;
+}
+
+.resource-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.resource-info {
+    padding: 20px; /* Consistent padding */
+    text-align: center; /* Centered text */
+}
+
+.resource-info h3 {
+    margin-bottom: 0.5rem;
+    color: var(--heading-color); /* Deep purple for headings */
+    font-size: 1.6rem;
+}
+
+.resource-info p {
+    margin-bottom: 1rem;
+    min-height: 4rem;
+    color: #555;
+}
+
+.resource-info .btn { /* Smaller button for resource cards */
+    padding: 8px 15px;
+    font-size: 0.9rem;
+}
+
+.thank-you-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--white); /* White background */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.success-icon {
+    font-size: 5rem;
+    color: var(--primary-purple); /* Purple icon */
+    margin-bottom: 2rem;
+}
+.thank-you-title {
+    color: var(--heading-color); /* Deep purple title */
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+}
+
+.thank-you-message {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.next-steps {
+    background-color: var(--cream-dark); /* Cream background for next steps */
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.next-steps h3 {
+    color: var(--primary-purple); /* Purple heading */
+    margin-bottom: 1rem;
+}
+
+.next-steps ol {
+    text-align: left;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.next-steps li {
+    margin-bottom: 0.5rem;
+}
+
+footer {
+    background-color: var(--heading-color); /* Dark purple for footer */
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+    text-align: left; /* Align text left within columns */
+}
+
+.footer-column h3 {
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent; /* Fallback */
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0; /* Remove default padding */
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--gradient-end); /* Matches gradient */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-image {
+        max-width: 100%;
+    }
+
+    .footer-content {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-column {
+        min-width: unset;
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start; /* Align logo left */
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+        gap: 1rem;
+        transition: max-height 0.3s ease-out;
+        max-height: 0;
+        overflow: hidden;
+        border-top: 1px solid rgba(255,255,255,0.1); /* Ensure it's there for mobile menu */
+        padding-top: 1rem;
+    }
+
+    .nav-links.open {
+        display: flex;
+        max-height: 300px; /* Adjust as needed */
+    }
+    
+    .nav-links li {
+        margin: 0; /* Reset margin for stacked links */
+        width: 100%; /* Make links take full width */
+    }
+    .nav-links li a {
+        padding: 10px 0; /* Add padding for clickable area */
+        width: 100%; /* Make link fill container */
+    }
+
+    .hamburger {
+        display: flex;
+        position: absolute; /* Position hamburger to the right */
+        right: 20px;
+        top: 25px; /* Adjust top positioning */
+    }
+
+    .hero {
+        padding: 4rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .stat-item {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .dev-grid,
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .job-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .centered-logo {
+        max-width: 200px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .job-meta span {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+    }
+
+    .job-card .job-title {
+        font-size: 1.6rem;
+    }
+
+    .job-description h4,
+    .job-requirements h4,
+    .job-qualifications h4 {
+        font-size: 1.1rem;
+    }
+
+    .footer-column h3 {
+        font-size: 1.1rem;
+    }
+}
